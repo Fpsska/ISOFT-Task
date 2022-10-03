@@ -13,7 +13,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background-color: $white-color;
+    background-color: $primary-color;
     font-family: 'Gilroy-Medium', sans-serif;
     font-weight: 400;
     overflow-x: hidden;
@@ -24,4 +24,9 @@ body {
     width: 100%;
     padding: 0 useRem(10);
     margin: 0 auto;
+}
+
+.border {
+    border: useRem(2) solid $dark-color;
+    border-radius: useRem(10);
 }

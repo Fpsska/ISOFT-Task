@@ -13,7 +13,7 @@ import '../../assets/styles/style.scss';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className="App container">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />} />

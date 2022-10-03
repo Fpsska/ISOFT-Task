@@ -1,0 +1,34 @@
+@import '../../assets/styles/functions';
+
+// /. imports
+
+.header {
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: useRem(10) useRem(5);
+    }
+
+    &__time {
+        color: $white-color;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-right: useRem(20);
+    }
+}
+
+.logo {
+    width: useRem(50);
+    height: useRem(50);
+    position: relative;
+    overflow: hidden;
+    border-radius: useRem(50);
+
+    &__image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
