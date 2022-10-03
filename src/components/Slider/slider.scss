@@ -4,8 +4,19 @@
 // /. imports
 
 .swiper {
+    position: static;
     width: 100%;
     height: 100%;
+}
+
+.swiper-scrollbar {
+    background: transparent;
+    bottom: auto;
+    top: useRem(3);
+}
+
+.swiper-scrollbar-drag {
+    background: $white-color;
 }
 
 .swiper-slide {

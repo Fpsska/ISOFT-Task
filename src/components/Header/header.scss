@@ -3,6 +3,8 @@
 // /. imports
 
 .header {
+    flex: 0 0 auto;
+
     &__wrapper {
         display: flex;
         align-items: center;

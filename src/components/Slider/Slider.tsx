@@ -6,10 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/navigation';
+import 'swiper/scss/scrollbar';
+
 import './slider.scss';
 
 // import required modules
-import { Navigation } from 'swiper';
+import { Navigation, Scrollbar } from 'swiper';
 
 // /. imports
 
@@ -33,7 +35,10 @@ const Slider: React.FC<propTypes> = ({ children }) => {
           prevEl: '.slider-button.prev',
           nextEl: '.slider-button.next'
         }}
-        modules={[Navigation]}
+        scrollbar={{
+          hide: true
+        }}
+        modules={[Navigation, Scrollbar]}
         className="mySwiper"
         onSlideChange={e => slideChangeHandler(e)}
       >

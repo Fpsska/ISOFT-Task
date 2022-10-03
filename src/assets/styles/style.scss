@@ -19,6 +19,33 @@ body {
     overflow-x: hidden;
 }
 
+#root,
+.App,
+.page {
+    height: 100%;
+}
+
+.App {
+    position: relative;
+}
+
+.page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    max-height: useRem(768);
+    min-height: useRem(768);
+    overflow-y: scroll;
+}
+
+.main {
+    flex: 1 0 auto;
+}
+
 .container {
     max-width: useRem(1044);
     width: 100%;
@@ -36,7 +63,10 @@ body {
 }
 
 .section {
+    height: 100%;
+
     &__wrapper {
+        height: 100%;
         display: grid;
         // grid-template-columns: repeat(8, 1fr);
         // grid-template-rows: repeat(2, 1fr);
