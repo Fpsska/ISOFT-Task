@@ -1,0 +1,13 @@
+@import '../../assets/styles/vars';
+@import '../../assets/styles/functions';
+
+// /. imports
+
+.footer {
+    background-color: $dark-color;
+
+    &__wrapper {
+        position: relative;
+        padding: useRem(30) useRem(60) useRem(25) useRem(60);
+    }
+}

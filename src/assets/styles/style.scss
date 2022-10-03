@@ -192,3 +192,13 @@ body {
         color: $white-color
     }
 }
+
+.button {
+    width: useRem(40);
+    height: useRem(40);
+    background-color: $primary-color;
+}
+
+.button.active {
+    background-color: $ligth-blue;
+}
