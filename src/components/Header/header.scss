@@ -7,7 +7,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: useRem(10) useRem(5);
+        padding: useRem(5);
     }
 
     &__time {
@@ -19,8 +19,8 @@
 }
 
 .logo {
-    width: useRem(50);
-    height: useRem(50);
+    width: useRem(30);
+    height: useRem(30);
     position: relative;
     overflow: hidden;
     border-radius: useRem(50);

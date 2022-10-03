@@ -24,7 +24,7 @@ const Header: React.FC = () => {
   return (
     <header className="header border">
       <div className="header__wrapper">
-        <time className="header__time">{time}</time>
+        <time className="header__time">Current time: {time}</time>
 
         <a className="header__logo logo" href="#">
           <img className="logo__image" src={logo} alt="logo" />
