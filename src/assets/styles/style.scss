@@ -40,6 +40,22 @@ body {
     max-height: useRem(768);
     min-height: useRem(768);
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0
+    }
+
+    &::-webkit-scrollbar-track {
+        background: none;
+        background-color: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: none;
+        background-color: none;
+        border: none;
+    }
 }
 
 .main {
@@ -227,6 +243,16 @@ body {
     width: useRem(40);
     height: useRem(40);
     background-color: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        transform: rotate(90deg);
+        flex-shrink: 0;
+        width: 50%;
+        height: 50%;
+    }
 }
 
 .button.active {

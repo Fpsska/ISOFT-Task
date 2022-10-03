@@ -8,6 +8,7 @@ import MainPage from '../pages/MainPage/MainPage';
 import './App.css';
 import '../../assets/styles/_reset.scss';
 import '../../assets/styles/style.scss';
+import '../../assets/styles/_media.scss';
 
 // /. imports
 

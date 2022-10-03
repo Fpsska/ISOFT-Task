@@ -71,11 +71,14 @@ const MainPage: React.FC = () => {
             </div>
             <div className="group__column group__column--6 border indent">
               <form className="form" onSubmit={e => e.preventDefault()}>
-                <input
-                  className="form__input"
-                  type="text"
-                  placeholder="Input some text..."
-                />
+                <fieldset>
+                  <legend>add new file name</legend>
+                  <input
+                    className="form__input"
+                    type="text"
+                    placeholder="Type file name..."
+                  />
+                </fieldset>
               </form>
             </div>
           </div>

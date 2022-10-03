@@ -26,7 +26,12 @@ const Header: React.FC = () => {
       <div className="header__wrapper">
         <time className="header__time">Current time: {time}</time>
 
-        <a className="header__logo logo" href="#">
+        <a
+          className="header__logo logo"
+          target="_blank"
+          rel="nofollow noopener"
+          href="https://spb.hh.ru/employer/9239466?hhtmFrom=vacancy"
+        >
           <img className="logo__image" src={logo} alt="logo" />
         </a>
       </div>
