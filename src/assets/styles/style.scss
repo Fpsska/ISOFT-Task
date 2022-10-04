@@ -88,14 +88,14 @@ body {
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-areas:
-            "col-1 col-2 col-3"
-            "col-4 col-4 col-5"
+            "col-1 col-1 col-1 col-1 col-2 col-3 col-3 col-3"
+            "col-4 col-4 col-4 col-4 col-5 col-5 col-5 col-5"
+            "col-6 col-6 col-6 col-6 col-7 col-7 col-7 col-7"
         ;
     }
 
     &__column {
         overflow: hidden;
-        min-height: useRem(215);
         color: $red;
         font-weight: 700;
     }
@@ -118,13 +118,23 @@ body {
     &__column--4 {
         grid-area: col-4;
         grid-column: 4 span;
-        min-height: 0;
     }
 
     &__column--5 {
         grid-area: col-5;
         grid-column: 4 span;
-        min-height: 0;
+    }
+
+    &__column--6 {
+        grid-area: col-6;
+        grid-column: 4 span;
+        min-height: useRem(25);
+    }
+
+    &__column--7 {
+        grid-area: col-7;
+        grid-column: 4 span;
+        min-height: useRem(25);
     }
 }
 
@@ -135,7 +145,6 @@ body {
 
     &__column {
         overflow: hidden;
-        min-height: useRem(215);
         color: $red;
         font-weight: 700;
     }
@@ -155,40 +164,12 @@ body {
         grid-column: 4 span;
         min-height: useRem(25);
     }
-
-    &__column--4 {
-        grid-area: col-4;
-        grid-column: 4 span;
-        min-height: useRem(25);
-    }
-
-    &__column--5 {
-        grid-area: col-5;
-        grid-column: 4 span;
-        min-height: useRem(280);
-    }
-
-    &__column--6 {
-        grid-area: col-6;
-        grid-column: 4 span;
-        min-height: useRem(25);
-        padding: useRem(10) useRem(10) useRem(10) useRem(3.5);
-    }
 }
 
 .group--empty {
     grid-template-areas:
         "col-1 col-2"
         "col-3 col-3"
-        "col-4 col-4"
-    ;
-}
-
-.group--file {
-    grid-template-areas:
-        "col-5 col-5"
-        "col-5 col-5"
-        "col-6 col-6"
     ;
 }
 
@@ -268,7 +249,7 @@ body {
     &__file-data {
         display: flex;
         flex-direction: column;
-        max-height: calc(useRem(768) - useRem(600));
+        // max-height: calc(useRem(768) - useRem(600));
         overflow: auto;
 
         &::-webkit-scrollbar {

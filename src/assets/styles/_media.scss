@@ -3,12 +3,18 @@
 
         grid-template-columns: repeat(6, 1fr);
 
+        // grid-template-areas:
+        //     "col-1 col-1 col-1"
+        //     "col-2 col-3 col-3"
+        //     "col-2 col-3 col-3"
+        //     "col-4 col-4 col-5"
+        // ;
+
         grid-template-areas:
-            "col-1 col-1 col-1"
-            "col-2 col-3 col-3"
-            "col-2 col-3 col-3"
-            "col-4 col-4 col-5"
-        ;
+            "col-1 col-1 col-1 col-1 col-1 col-1"
+            "col-2 col-2 col-3 col-3 col-3 col-3"
+            "col-4 col-4 col-4 col-5 col-5 col-5"
+            "col-6 col-6 col-6 col-7 col-7 col-7";
     }
 
     .section__column--1 {
@@ -24,7 +30,9 @@
     }
 
     .section__column--4,
-    .section__column--5 {
+    .section__column--5,
+    .section__column--6,
+    .section__column--7 {
         grid-column: 3 span;
     }
 
@@ -37,10 +45,7 @@
         grid-column: 3 span;
     }
 
-    .group__column--3,
-    .group__column--4,
-    .group__column--5,
-    .group__column--6 {
+    .group__column--3 {
         grid-column: 6 span;
     }
 }
@@ -48,16 +53,19 @@
 @media screen and (max-width: 700px) {
     .section__wrapper {
         grid-template-areas:
-            "col-1 col-1 col-1"
-            "col-2 col-3 col-3"
-            "col-2 col-3 col-3"
-            "col-4 col-4 col-4"
-            "col-5 col-5 col-5"
+            "col-1 col-1 col-1 col-1 col-1 col-1"
+            "col-2 col-2 col-3 col-3 col-3 col-3"
+            "col-4 col-4 col-4 col-4 col-4 col-4"
+            "col-5 col-5 col-5 col-5 col-5 col-5"
+            "col-7 col-7 col-7 col-7 col-7 col-7"
+            "col-6 col-6 col-6 col-6 col-6 col-6"
         ;
     }
 
     .section__column--4,
-    .section__column--5 {
+    .section__column--5,
+    .section__column--6,
+    .section__column--7 {
         grid-column: 6 span;
     }
 }
@@ -74,17 +82,23 @@
         grid-template-columns: repeat(4, 1fr);
 
         grid-template-areas:
-            "col-1 col-1 col-1"
-            "col-2 col-2 col-2"
-            "col-3 col-3 col-3"
-            "col-4 col-4 col-4"
-            "col-5 col-5 col-5"
+            "col-1 col-1 col-1 col-1"
+            "col-2 col-2 col-2 col-2"
+            "col-3 col-3 col-3 col-3"
+            "col-4 col-4 col-4 col-4"
+            "col-5 col-5 col-5 col-5"
+            "col-7 col-7 col-7 col-7"
+            "col-6 col-6 col-6 col-6"
         ;
     }
 
     .section__column--1,
     .section__column--2,
-    .section__column--3 {
+    .section__column--3,
+    .section__column--4,
+    .section__column--5,
+    .section__column--6,
+    .section__column--7 {
         grid-column: 4 span;
     }
 }
@@ -97,19 +111,15 @@
 
     .group--empty {
         grid-template-areas:
-            "col-1 col-1"
-            "col-2 col-2"
-            "col-3 col-3"
-            "col-4 col-4"
+            "col-1 col-1 col-1 col-1"
+            "col-2 col-2 col-2 col-2"
+            "col-3 col-3 col-3 col-3"
         ;
     }
 
     .group__column--1,
     .group__column--2,
-    .group__column--3,
-    .group__column--4,
-    .group__column--5,
-    .group__column--6 {
+    .group__column--3 {
         grid-column: 4 span;
     }
 }
