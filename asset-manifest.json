@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ISOFT-Task/static/css/main.a966efb6.css",
-    "main.js": "/ISOFT-Task/static/js/main.f0f00adf.js",
+    "main.css": "/ISOFT-Task/static/css/main.4af464f8.css",
+    "main.js": "/ISOFT-Task/static/js/main.fa8a56fe.js",
     "static/js/787.2dbfe04e.chunk.js": "/ISOFT-Task/static/js/787.2dbfe04e.chunk.js",
     "service-worker.js": "/ISOFT-Task/service-worker.js",
     "index.html": "/ISOFT-Task/index.html",
-    "main.a966efb6.css.map": "/ISOFT-Task/static/css/main.a966efb6.css.map",
-    "main.f0f00adf.js.map": "/ISOFT-Task/static/js/main.f0f00adf.js.map",
+    "main.4af464f8.css.map": "/ISOFT-Task/static/css/main.4af464f8.css.map",
+    "main.fa8a56fe.js.map": "/ISOFT-Task/static/js/main.fa8a56fe.js.map",
     "787.2dbfe04e.chunk.js.map": "/ISOFT-Task/static/js/787.2dbfe04e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a966efb6.css",
-    "static/js/main.f0f00adf.js"
+    "static/css/main.4af464f8.css",
+    "static/js/main.fa8a56fe.js"
   ]
 }
