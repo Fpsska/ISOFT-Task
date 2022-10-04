@@ -9,7 +9,7 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        padding: useRem(5);
+        padding: useRem(3) useRem(5);
     }
 
     &__time {

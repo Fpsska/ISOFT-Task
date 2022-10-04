@@ -1,5 +1,8 @@
 @media screen and (max-width: 768px) {
     .section__wrapper {
+
+        grid-template-columns: repeat(6, 1fr);
+
         grid-template-areas:
             "col-1 col-1 col-1"
             "col-2 col-3 col-3"
@@ -9,7 +12,7 @@
     }
 
     .section__column--1 {
-        grid-column: 8 span;
+        grid-column: 6 span;
     }
 
     .section__column--2 {
@@ -17,6 +20,27 @@
     }
 
     .section__column--3 {
+        grid-column: 4 span;
+    }
+
+    .section__column--4,
+    .section__column--5 {
+        grid-column: 3 span;
+    }
+
+    .group {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .group__column--1,
+    .group__column--2 {
+        grid-column: 3 span;
+    }
+
+    .group__column--3,
+    .group__column--4,
+    .group__column--5,
+    .group__column--6 {
         grid-column: 6 span;
     }
 }
@@ -32,22 +56,23 @@
         ;
     }
 
-    .section__column--4 {
-        grid-column: 8 span;
-    }
-
+    .section__column--4,
     .section__column--5 {
-        grid-column: 8 span;
+        grid-column: 6 span;
     }
 }
 
 @media screen and (max-width: 475px) {
+
     .header__wrapper {
         justify-content: center;
         flex-wrap: wrap;
     }
 
     .section__wrapper {
+
+        grid-template-columns: repeat(4, 1fr);
+
         grid-template-areas:
             "col-1 col-1 col-1"
             "col-2 col-2 col-2"
@@ -60,11 +85,16 @@
     .section__column--1,
     .section__column--2,
     .section__column--3 {
-        grid-column: 8 span;
+        grid-column: 4 span;
     }
 }
 
 @media screen and (max-width: 375px) {
+
+    .group {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
     .group--empty {
         grid-template-areas:
             "col-1 col-1"
@@ -72,5 +102,14 @@
             "col-3 col-3"
             "col-4 col-4"
         ;
+    }
+
+    .group__column--1,
+    .group__column--2,
+    .group__column--3,
+    .group__column--4,
+    .group__column--5,
+    .group__column--6 {
+        grid-column: 4 span;
     }
 }
