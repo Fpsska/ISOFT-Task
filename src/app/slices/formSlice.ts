@@ -6,14 +6,18 @@ import { Iinput } from '../../types/inputDataTypes';
 
 interface IformSlice {
     inputData: Iinput[]
-    path: string
+    directoryPath: string
+    fileName: string
+    isFileSelected: boolean
 }
 
 // /. interfaces
 
 const initialState: IformSlice = {
     inputData: [],
-    path: '//value/from/state/'
+    directoryPath: '//value/from/state/',
+    fileName: 'name from state',
+    isFileSelected: false
 };
 
 // /. initialState
@@ -24,12 +28,24 @@ const formSlice = createSlice({
     reducers: {
         setInputValue(state, action: PayloadAction<Iinput>) {
             state.inputData.push(action.payload)
+        },
+        setDirectoryPath(state, action: PayloadAction<string>) {
+            state.directoryPath = action.payload
+        },
+        setFileName(state, action: PayloadAction<string>) {
+            state.fileName = action.payload
+        },
+        switchFileSelectedStatus(state, action: PayloadAction<boolean>) {
+            state.isFileSelected = action.payload
         }
     }
 });
 
 export const {
-    setInputValue
+    setInputValue,
+    setDirectoryPath,
+    setFileName,
+    switchFileSelectedStatus
 } = formSlice.actions;
 
 export default formSlice.reducer;

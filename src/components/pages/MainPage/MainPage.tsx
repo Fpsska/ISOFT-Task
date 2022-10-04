@@ -1,6 +1,12 @@
 import React from 'react';
 
-import { useAppSelector } from '../../../app/hooks';
+import { useAppSelector, useAppDispatch } from '../../../app/hooks';
+
+import {
+  setDirectoryPath,
+  setFileName,
+  switchFileSelectedStatus
+} from '../../../app/slices/formSlice';
 
 import { Iinput } from '../../../types/inputDataTypes';
 
@@ -11,7 +17,20 @@ import '../../../assets/styles/style.scss';
 // /. imports
 
 const MainPage: React.FC = () => {
-  const { inputData, path } = useAppSelector(state => state.formSlice);
+  const { inputData, directoryPath, fileName, isFileSelected } = useAppSelector(
+    state => state.formSlice
+  );
+
+  const dispatch = useAppDispatch();
+
+  const handleInputFile = (e: any): void => {
+    const path = e.target.value;
+    const fileName = e.target.files[0].name;
+
+    dispatch(switchFileSelectedStatus(true));
+    dispatch(setDirectoryPath(path));
+    dispatch(setFileName(fileName));
+  };
 
   return (
     <section className="section">
@@ -71,21 +90,75 @@ const MainPage: React.FC = () => {
             <div className="group__column group__column--5 border indent">
               <div className="file-manager">
                 <div className="file-manager__wrapper">
-                  <div className="file-manager__preview">
-                    <span className="file-manager__path">{path}</span>
-                    <span className="file-manager__file-name">file 2022</span>
-                  </div>
-                  <div className="file-manager__information">
-                    <h3 className="file-manager__file-name">file 2022;</h3>
-                    <h2 className="file-manager__caption">
-                      data from this file:
-                    </h2>
-                    <p className="file-manager__file-data">
-                      {inputData.map((template: Iinput) => {
-                        return <span key={template.id}>{template.value}</span>;
-                      })}
-                    </p>
-                  </div>
+                  <>
+                    {isFileSelected ? (
+                      <div className="file-manager__preview">
+                        <span className="file-manager__path">
+                          {directoryPath}
+                        </span>
+                        <span className="file-manager__file-name">
+                          {fileName}
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="file-manager__input input-file">
+                        <form
+                          className="input-file__form"
+                          onSubmit={e => e.preventDefault()}
+                        >
+                          <label className="input-file__label">
+                            <span>Choose file</span>
+                            <input
+                              className="input-file__input"
+                              type="file"
+                              accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                              onChange={e => handleInputFile(e)}
+                            />
+                          </label>
+                        </form>
+                      </div>
+                    )}
+                  </>
+                  <>
+                    {isFileSelected && (
+                      <div className="file-manager__information">
+                        <h3 className="file-manager__file-name">
+                          {fileName} ;
+                        </h3>
+                        <h2 className="file-manager__caption">
+                          data from this file:
+                        </h2>
+                        <p className="file-manager__file-data">
+                          {inputData.map((template: Iinput) => {
+                            return (
+                              <span key={template.id}>{template.value}</span>
+                            );
+                          })}
+                        </p>
+                        <button
+                          className="file-manager__button"
+                          onClick={() =>
+                            dispatch(switchFileSelectedStatus(false))
+                          }
+                        >
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle cx="12" cy="12" r="9" strokeWidth="2" />
+                            <path
+                              d="M9.0001 14.9997L15.0001 8.99966"
+                              strokeWidth="2"
+                            />
+                            <path d="M15 15L9 9" strokeWidth="2" />
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </>
                 </div>
               </div>
             </div>

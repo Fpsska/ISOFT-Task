@@ -4,6 +4,7 @@
 
 .header {
     flex: 0 0 auto;
+    background-color: $primary-color;
 
     &__wrapper {
         display: flex;
@@ -26,6 +27,7 @@
     position: relative;
     overflow: hidden;
     border-radius: useRem(50);
+    background-color: $dark-color;
 
     &__image {
         position: absolute;

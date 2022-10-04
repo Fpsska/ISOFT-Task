@@ -1,5 +1,6 @@
 @import './vars';
 @import './functions';
+@import './mixins';
 
 // /. imports
 
@@ -13,7 +14,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    background-color: $primary-color;
+    background-color: rgba($color: #000, $alpha: .36);
     font-family: 'Gilroy-Medium', sans-serif;
     font-weight: 400;
     overflow-x: hidden;
@@ -34,6 +35,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: $primary-color;
 
     display: flex;
     flex-direction: column;
@@ -63,9 +65,8 @@ body {
 }
 
 .container {
-    max-width: useRem(1044);
+    max-width: useRem(1024);
     width: 100%;
-    padding: 0 useRem(10);
     margin: 0 auto;
 }
 
@@ -80,6 +81,7 @@ body {
 
 .section {
     height: 100%;
+    background-color: $primary-color;
 
     &__wrapper {
         height: 100%;
@@ -199,8 +201,9 @@ body {
     &__preview {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         background-color: #7E63BE;
-        padding: useRem(1) useRem(10);
+        padding: useRem(1) useRem(25) useRem(1) useRem(10);
         margin: 0 0 useRem(15);
 
         :not(:last-child) {
@@ -209,13 +212,36 @@ body {
     }
 
     &__information {
+        position: relative;
         display: flex;
         flex-direction: column;
+        padding: useRem(2) useRem(20) useRem(2) 0;
 
         .file-manager__file-name {
             color: #0CFA55;
         }
+    }
 
+    &__button {
+        position: absolute;
+        top: useRem(-13);
+        right: 0;
+        background-color: transparent;
+
+        &:active svg {
+            transform: scale(1.05);
+        }
+
+        &:hover svg {
+            opacity: 1;
+        }
+
+        svg {
+            transition: all .3s ease-in-out;
+            transform: scale(1);
+            stroke: $red;
+            opacity: 0.4;
+        }
     }
 
     &__file-name,
@@ -223,6 +249,7 @@ body {
     &__caption {
         text-transform: uppercase;
         font-weight: 600;
+        @include sliceText;
     }
 
     &__file-name,
@@ -246,5 +273,30 @@ body {
             color: $white-color;
             text-transform: uppercase;
         }
+    }
+}
+
+.input-file {
+    &__form {
+        padding: useRem(10);
+        border: useRem(2) dashed #7E63BE;
+        display: block;
+    }
+
+    &__label {
+        display: block;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        color: $white-color;
+        transition: color .3s ease-in-out;
+
+        &:hover {
+            color: $dark-color;
+        }
+    }
+
+    &__input {
+        @include hideElement;
     }
 }
