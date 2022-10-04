@@ -11,6 +11,24 @@
     justify-content: center;
     align-items: center;
 
+    position: relative;
+
+    &::after {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        content: '';
+        position: absolute;
+        bottom: useRem(-5);
+        right: useRem(-5);
+        z-index: 2;
+
+        width: useRem(40);
+        height: useRem(40);
+        background-color: $primary-color;
+        border: useRem(1) solid $dark-color;
+    }
+
     svg {
         transform: rotate(90deg);
         flex-shrink: 0;
@@ -21,4 +39,9 @@
 
 .button.active {
     background-color: $ligth-blue;
+
+    &::after {
+        opacity: 1;
+        visibility: visible;
+    }
 }
