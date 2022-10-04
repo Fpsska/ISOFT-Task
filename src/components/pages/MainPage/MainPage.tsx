@@ -1,5 +1,9 @@
 import React from 'react';
 
+import { useAppSelector } from '../../../app/hooks';
+
+import { Iinput } from '../../../types/inputDataTypes';
+
 import Form from '../../Form/Form';
 
 import '../../../assets/styles/style.scss';
@@ -7,6 +11,8 @@ import '../../../assets/styles/style.scss';
 // /. imports
 
 const MainPage: React.FC = () => {
+  const { inputData, path } = useAppSelector(state => state.formSlice);
+
   return (
     <section className="section">
       <div className="section__wrapper">
@@ -66,17 +72,19 @@ const MainPage: React.FC = () => {
               <div className="file-manager">
                 <div className="file-manager__wrapper">
                   <div className="file-manager__preview">
-                    <span className="file-manager__path">
-                      //MEM/USER/PATH1/
-                    </span>
-                    <h3 className="file-manager__file-name">file 2022</h3>
+                    <span className="file-manager__path">{path}</span>
+                    <span className="file-manager__file-name">file 2022</span>
                   </div>
                   <div className="file-manager__information">
-                    <span className="file-manager__file-name">file 2022;</span>
-                    <h3 className="file-manager__caption">
+                    <h3 className="file-manager__file-name">file 2022;</h3>
+                    <h2 className="file-manager__caption">
                       data from this file:
-                    </h3>
-                    <p className="file-manager__data"></p>
+                    </h2>
+                    <p className="file-manager__file-data">
+                      {inputData.map((template: Iinput) => {
+                        return <span key={template.id}>{template.value}</span>;
+                      })}
+                    </p>
                   </div>
                 </div>
               </div>

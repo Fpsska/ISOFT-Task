@@ -210,19 +210,35 @@ body {
             color: #0CFA55;
         }
 
-        :not(:last-child) {
-            margin: 0 0 useRem(5) 0;
-        }
     }
 
     &__file-name,
     &__path,
     &__caption {
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 600;
+    }
+
+    &__file-name,
+    &__path {
+        color: $dark-color;
     }
 
     &__caption {
-        color: $white-color
+        color: $white-color;
+        font-size: useRem(15);
+        margin: useRem(5) 0 useRem(10) 0;
+
+    }
+
+    &__file-data {
+        display: flex;
+        flex-direction: column;
+
+        span {
+            font-weight: 400;
+            color: $white-color;
+            text-transform: uppercase;
+        }
     }
 }
