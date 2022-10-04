@@ -1,14 +1,15 @@
 import React from 'react';
 
+import { Ifile } from '../../../types/fileDataTypes';
+
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 import {
   setDirectoryPath,
   setFileName,
+  setFileContent,
   switchFileSelectedStatus
 } from '../../../app/slices/formSlice';
-
-import { Iinput } from '../../../types/inputDataTypes';
 
 import Form from '../../Form/Form';
 
@@ -17,19 +18,39 @@ import '../../../assets/styles/style.scss';
 // /. imports
 
 const MainPage: React.FC = () => {
-  const { inputData, directoryPath, fileName, isFileSelected } = useAppSelector(
-    state => state.formSlice
-  );
+  const { directoryPath, fileName, fileContent, isFileSelected } =
+    useAppSelector(state => state.formSlice);
 
   const dispatch = useAppDispatch();
 
   const handleInputFile = (e: any): void => {
     const path = e.target.value;
-    const fileName = e.target.files[0].name;
+    const fileName = e.currentTarget.files[0].name;
 
     dispatch(switchFileSelectedStatus(true));
     dispatch(setDirectoryPath(path));
     dispatch(setFileName(fileName));
+
+    // read document data
+    readDocumentData(e);
+  };
+
+  const readDocumentData = (e: any): void => {
+    const fileReader = new FileReader();
+    console.log(e.target.files[0]);
+
+    fileReader.readAsText(e.target.files[0]);
+
+    fileReader.onload = () => {
+      console.log(fileReader.result);
+      dispatch(
+        setFileContent({ id: +new Date(), value: String(fileReader.result) })
+      );
+    };
+
+    fileReader.onerror = function () {
+      console.log(fileReader.error);
+    };
   };
 
   return (
@@ -111,7 +132,7 @@ const MainPage: React.FC = () => {
                             <input
                               className="input-file__input"
                               type="file"
-                              accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                              accept=".txt"
                               onChange={e => handleInputFile(e)}
                             />
                           </label>
@@ -129,7 +150,7 @@ const MainPage: React.FC = () => {
                           data from this file:
                         </h2>
                         <p className="file-manager__file-data">
-                          {inputData.map((template: Iinput) => {
+                          {fileContent.map((template: Ifile) => {
                             return (
                               <span key={template.id}>{template.value}</span>
                             );
@@ -137,6 +158,7 @@ const MainPage: React.FC = () => {
                         </p>
                         <button
                           className="file-manager__button"
+                          aria-label="remove selected file"
                           onClick={() =>
                             dispatch(switchFileSelectedStatus(false))
                           }

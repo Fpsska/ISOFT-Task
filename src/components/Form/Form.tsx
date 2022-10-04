@@ -1,14 +1,16 @@
 import React, { useState, useRef } from 'react';
 
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
-import { setInputValue } from '../../app/slices/formSlice';
+import { setFileContent } from '../../app/slices/formSlice';
 
 import './form.scss';
 
 // /. imports
 
 const Form: React.FC = () => {
+  const { isFileSelected } = useAppSelector(state => state.formSlice);
+
   const [enteredInputValue, setEnteredInputValue] = useState<string>('');
 
   const formRef = useRef<HTMLFormElement>(null!);
@@ -18,8 +20,15 @@ const Form: React.FC = () => {
   const handleFormSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
+    console.log(enteredInputValue);
+    // dispatch(
+    //   setInputValue({ id: +new Date(), value: `${enteredInputValue} ;` })
+    // );
     dispatch(
-      setInputValue({ id: +new Date(), value: `${enteredInputValue} ;` })
+      setFileContent({
+        id: +new Date(),
+        value: `${enteredInputValue} ${enteredInputValue && ';'}`
+      })
     );
     // clear input value
     formRef.current.reset();
@@ -35,6 +44,7 @@ const Form: React.FC = () => {
           type="text"
           placeholder="Type file name..."
           onChange={e => setEnteredInputValue(e.target.value)}
+          disabled={!isFileSelected}
           autoFocus
         />
       </fieldset>

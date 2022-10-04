@@ -218,7 +218,7 @@ body {
         padding: useRem(2) useRem(20) useRem(2) 0;
 
         .file-manager__file-name {
-            color: #0CFA55;
+            color: rgba($color: #0CFA55, $alpha: .85);
         }
     }
 
@@ -260,18 +260,38 @@ body {
     &__caption {
         color: $white-color;
         font-size: useRem(15);
-        margin: useRem(5) 0 useRem(10) 0;
-
+        margin: useRem(5) 0 useRem(5) 0;
+        padding-bottom: useRem(5);
+        border-bottom: useRem(1) solid $dark-color;
     }
 
     &__file-data {
         display: flex;
         flex-direction: column;
+        max-height: calc(useRem(768) - useRem(600));
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            width: useRem(4);
+            height: useRem(4);
+        }
+
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-corner {
+            background: none;
+            background-color: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $dark-color;
+            background-color: $dark-color;
+        }
+
+
 
         span {
             font-weight: 400;
             color: $white-color;
-            text-transform: uppercase;
         }
     }
 }

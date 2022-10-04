@@ -1,4 +1,4 @@
-export interface Iinput {
+export interface Ifile {
     id: number
     value: string
 }
