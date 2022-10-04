@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Form from '../../Form/Form';
+
 import '../../../assets/styles/style.scss';
 
 // /. imports
@@ -10,38 +12,48 @@ const MainPage: React.FC = () => {
       <div className="section__wrapper">
         {/* section row 1 */}
         <div className="section__column section__column--1 border indent">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          corrupti tempora labore, inventore debitis beatae amet modi neque
-          consequatur sint, veniam quibusdam, asperiores quae molestias
-          recusandae consequuntur ipsam delectus minus.
+          <p className="section__text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+            corrupti tempora labore, inventore debitis beatae amet modi neque
+            consequatur sint, veniam quibusdam, asperiores quae molestias
+            recusandae consequuntur ipsam delectus minus.
+          </p>
         </div>
         <div className="section__column section__column--2 border indent">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          corrupti tempora labore, inventore debitis beatae amet modi neque
-          consequatur sint, veniam quibusdam, asperiores quae molestias
-          recusandae consequuntur ipsam delectus minus.
+          <p className="section__text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+            corrupti tempora labore, inventore debitis beatae amet modi neque
+            consequatur sint, veniam quibusdam, asperiores quae molestias
+            recusandae consequuntur ipsam delectus minus.
+          </p>
         </div>
         <div className="section__column section__column--3 border indent">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-          corrupti tempora labore, inventore debitis beatae amet modi neque
-          consequatur sint, veniam quibusdam, asperiores quae molestias
-          recusandae consequuntur ipsam delectus minus.
+          <p className="section__text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+            corrupti tempora labore, inventore debitis beatae amet modi neque
+            consequatur sint, veniam quibusdam, asperiores quae molestias
+            recusandae consequuntur ipsam delectus minus.
+          </p>
         </div>
         {/* section row 2 */}
         <div className="section__column section__column--4">
           <div className="group group--empty">
             {/* group row 1 */}
             <div className="group__column group__column--1 border indent">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              corrupti tempora labore, inventore debitis beatae amet modi neque
-              consequatur sint, veniam quibusdam, asperiores quae molestias
-              recusandae consequuntur ipsam delectus minus.
+              <p className="section__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+                corrupti tempora labore, inventore debitis beatae amet modi
+                neque consequatur sint, veniam quibusdam, asperiores quae
+                molestias recusandae consequuntur ipsam delectus minus.
+              </p>
             </div>
             <div className="group__column group__column--2 border indent">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-              corrupti tempora labore, inventore debitis beatae amet modi neque
-              consequatur sint, veniam quibusdam, asperiores quae molestias
-              recusandae consequuntur ipsam delectus minus.
+              <p className="section__text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
+                corrupti tempora labore, inventore debitis beatae amet modi
+                neque consequatur sint, veniam quibusdam, asperiores quae
+                molestias recusandae consequuntur ipsam delectus minus.
+              </p>
             </div>
             <div className="group__column group__column--3 border indent"></div>
             <div className="group__column group__column--4 border indent"></div>
@@ -70,16 +82,7 @@ const MainPage: React.FC = () => {
               </div>
             </div>
             <div className="group__column group__column--6 border indent">
-              <form className="form" onSubmit={e => e.preventDefault()}>
-                <fieldset>
-                  <legend>add new file name</legend>
-                  <input
-                    className="form__input"
-                    type="text"
-                    placeholder="Type file name..."
-                  />
-                </fieldset>
-              </form>
+              <Form />
             </div>
           </div>
         </div>

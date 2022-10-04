@@ -162,6 +162,7 @@ body {
     &__column--6 {
         grid-area: col-6;
         min-height: useRem(25);
+        padding: useRem(10) useRem(10) useRem(10) useRem(3.5);
     }
 }
 
@@ -181,19 +182,6 @@ body {
         "col-5 col-5"
         "col-6 col-6"
     ;
-}
-
-.form {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-    &__input {
-        width: 90%;
-        padding: useRem(2) useRem(10);
-        border-radius: useRem(5)
-    }
 }
 
 .file-manager {
@@ -237,24 +225,4 @@ body {
     &__caption {
         color: $white-color
     }
-}
-
-.button {
-    width: useRem(40);
-    height: useRem(40);
-    background-color: $primary-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-        transform: rotate(90deg);
-        flex-shrink: 0;
-        width: 50%;
-        height: 50%;
-    }
-}
-
-.button.active {
-    background-color: $ligth-blue;
 }
