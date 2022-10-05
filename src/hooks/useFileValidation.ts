@@ -21,8 +21,10 @@ export function useFileValidation(): exportedDataTypes {
         const fileExtension = fileName.split('.').pop();
 
         if (!allowedExtensions.includes(fileExtension)) {
-            setValidationError(`Incorrect file format, allowed only: ${allowedExtensions}`)
-            console.error('Incorrect file format')
+            setValidationError(`Incorrect file format, allowed only: ${allowedExtensions}`);
+            console.error('Incorrect file format');
+        } else {
+            setValidationError(``);
         }
     }
 

@@ -8,7 +8,13 @@ import './form.scss';
 
 // /. imports
 
-const Form: React.FC = () => {
+interface propTypes {
+  validationError: string;
+}
+
+// /. interfaces
+
+const Form: React.FC<propTypes> = ({ validationError }) => {
   const { isFileSelected } = useAppSelector(state => state.formSlice);
 
   const [enteredInputValue, setEnteredInputValue] = useState<string>('');
@@ -48,7 +54,7 @@ const Form: React.FC = () => {
           type="text"
           placeholder="Type file name..."
           onChange={e => setEnteredInputValue(e.target.value)}
-          disabled={!isFileSelected}
+          disabled={!isFileSelected || !!validationError}
         />
       </fieldset>
     </form>

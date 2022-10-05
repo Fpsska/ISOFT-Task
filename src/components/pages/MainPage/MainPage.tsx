@@ -152,7 +152,7 @@ const MainPage: React.FC = () => {
         {/* section row 3 */}
         <div className="section__column section__column--6 border indent"></div>
         <div className="section__column section__column--7 border indent">
-          <Form />
+          <Form validationError={validationError} />
         </div>
       </div>
     </section>

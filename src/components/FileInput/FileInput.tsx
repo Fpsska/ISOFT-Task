@@ -17,6 +17,8 @@ interface propTypes {
   fileValidation: (arg1: any, arg2: string[]) => void;
 }
 
+// /. interfaces
+
 const FileInput: React.FC<propTypes> = ({ fileValidation }) => {
   const dispatch = useAppDispatch();
 
