@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Ifile } from '../../../types/fileDataTypes';
+
+import { useFileValidation } from '../../../hooks/useFileValidation';
 
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
@@ -24,6 +26,8 @@ const MainPage: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
+  const { fileValidation, validationError } = useFileValidation();
+
   const closeSelectedFile = (): void => {
     dispatch(switchFileSelectedStatus(false));
     dispatch(resetFileContent());
@@ -40,19 +44,7 @@ const MainPage: React.FC = () => {
     // read document data
     readDocumentData(e);
     // validation for file type
-    fileTypeValidaton(e);
-  };
-
-  const fileTypeValidaton = (e: any) => {
-    const fileName = e.target.files[0].name;
-
-    const allowedExtensions = ['txt'];
-
-    const fileExtension = fileName.split('.').pop();
-    if (!allowedExtensions.includes(fileExtension)) {
-      dispatch(switchFileSelectedStatus(false));
-      console.error('incorrect file format');
-    }
+    fileValidation(e, ['txt']);
   };
 
   const readDocumentData = (e: any): void => {
@@ -153,14 +145,27 @@ const MainPage: React.FC = () => {
               <>
                 {isFileSelected && (
                   <div className="file-manager__information">
-                    <h2 className="file-manager__caption">
-                      data from this file:
-                    </h2>
-                    <p className="file-manager__file-data">
-                      {fileContent.map((template: Ifile) => {
-                        return <span key={template.id}>{template.value}</span>;
-                      })}
-                    </p>
+                    {validationError ? (
+                      <h2
+                        className="file-manager__message"
+                        title={validationError}
+                      >
+                        {validationError}
+                      </h2>
+                    ) : (
+                      <>
+                        <h2 className="file-manager__caption">
+                          data from this file:
+                        </h2>
+                        <p className="file-manager__file-data">
+                          {fileContent.map((template: Ifile) => {
+                            return (
+                              <span key={template.id}>{template.value}</span>
+                            );
+                          })}
+                        </p>
+                      </>
+                    )}
                     <button
                       className="file-manager__button"
                       aria-label="remove selected file"

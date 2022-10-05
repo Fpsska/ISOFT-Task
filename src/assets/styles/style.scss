@@ -93,7 +93,7 @@ body {
     }
 
     &__text {
-        color: $red;
+        color: $red-color;
         font-weight: 700;
     }
 
@@ -237,7 +237,7 @@ body {
         svg {
             transition: all .3s ease-in-out;
             transform: scale(1);
-            stroke: $red;
+            stroke: $red-color;
             opacity: 0.4;
         }
     }
@@ -261,6 +261,12 @@ body {
         margin: useRem(5) 0 useRem(5) 0;
         padding-bottom: useRem(5);
         border-bottom: useRem(1) solid $dark-color;
+    }
+
+    &__message {
+        @extend .file-manager__caption;
+        color: rgba($color: $red-color, $alpha: .5);
+        text-transform: none;
     }
 
     &__file-data {
