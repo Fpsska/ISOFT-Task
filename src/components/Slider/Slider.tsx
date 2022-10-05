@@ -59,28 +59,32 @@ const Slider: React.FC<propTypes> = ({
   useEffect(() => {
     setInitialArrayEl(data.slice(0, limit));
     setLastArrayEl(data.slice(limit, data.length));
-    console.log(initialArrayEl);
   }, [data, limit]);
 
-  const slideChangeHandler = (swiper: any): void => {
-    const index = swiper.activeIndex; // save current slide index
-    const id = data[index].id; // find current slider item by current index
-
-    const newArrayByIDX = data.map(template =>
-      template.id === id
-        ? { ...template, isActive: true }
-        : { ...template, isActive: false }
-    );
-    // setButtonDataTemplates(newArrayByIDX);
-  };
-
-  const handleChildrenClick = (id: number): void => {
-    // + toggle click = remove class
+  const handleButtonClick = (_id: number, e: any): void => {
+    // add active class for current item, remove class of other elmts
     const newArray = data.map(item =>
-      item.id === id
+      item.id === _id
         ? { ...item, isActive: true }
         : { ...item, isActive: false }
     );
+
+    // remove active class by second/toggle click for current item
+    const btnEl = e.currentTarget;
+    const isElhasClass = btnEl.classList.contains('active');
+
+    if (isElhasClass) {
+      const currentItem = newArray.find(({ id }) => id === _id);
+      currentItem && (currentItem.isActive = false); // ''/null/undefined validation
+    }
+
+    // if (btnEl.classList.contains('active')) {
+    //   const currentItem = newArray.find(({ id }) => id === _id);
+    //   if (currentItem) {
+    //     currentItem.isActive = false;
+    //   }
+    // }
+
     setButtonDataTemplates(newArray);
   };
 
@@ -98,7 +102,6 @@ const Slider: React.FC<propTypes> = ({
         breakpoints={breakpointsCFG}
         modules={[Navigation, Scrollbar]}
         className="mySwiper"
-        onSlideChange={e => slideChangeHandler(e)}
       >
         <SwiperSlide>
           {initialArrayEl.map((template: Ibutton) => {
@@ -108,7 +111,7 @@ const Slider: React.FC<propTypes> = ({
                 id={template.id}
                 role={template.role}
                 isActive={template.isActive}
-                handleChildrenClick={handleChildrenClick}
+                handleButtonClick={handleButtonClick}
               ></Button>
             );
           })}
@@ -121,7 +124,7 @@ const Slider: React.FC<propTypes> = ({
                 id={template.id}
                 role={template.role}
                 isActive={template.isActive}
-                handleChildrenClick={handleChildrenClick}
+                handleButtonClick={handleButtonClick}
               ></Button>
             );
           })}

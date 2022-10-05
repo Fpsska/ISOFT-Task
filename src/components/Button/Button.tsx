@@ -8,15 +8,15 @@ interface propTypes {
   id: number;
   role: string;
   isActive: boolean;
-  handleChildrenClick: (arg: number) => void;
+  handleButtonClick: (arg: number, e: any) => void;
 }
 
 // /. interfaces
 
 const Button: React.FC<propTypes> = props => {
-  const { id, role, isActive, handleChildrenClick } = props;
+  const { id, role, isActive, handleButtonClick } = props;
 
-  const [childrenEl, setChildrenEl] = useState<any>();
+  const [childrenEl, setChildrenEl] = useState<JSX.Element | ''>();
 
   useEffect(() => {
     // handle button content
@@ -50,7 +50,7 @@ const Button: React.FC<propTypes> = props => {
       type="button"
       aria-label={role}
       data-content={id}
-      onClick={() => handleChildrenClick(id)}
+      onClick={e => handleButtonClick(id, e)}
     >
       {childrenEl}
     </button>

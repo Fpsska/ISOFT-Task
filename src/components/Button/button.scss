@@ -12,11 +12,17 @@
     align-items: center;
 
     position: relative;
+    transition: opacity 0.3s ease-in-out;
+
+    &:hover {
+        opacity: .5;
+    }
 
     &::after {
-        content: '';
+        content: attr(data-content);
         opacity: 0;
         visibility: hidden;
+        overflow: hidden;
         transition: all 0.3s ease-in-out;
         position: absolute;
         bottom: useRem(-5);
@@ -47,9 +53,17 @@
 
 .button.active {
     background-color: $ligth-blue;
+    opacity: 1;
+
+    &:hover {
+        &::after {
+            background-color: rgba($color: $dark-color, $alpha: .7);
+            border: useRem(1) solid rgba($color: $white-color, $alpha: .5);
+            color: $white-color;
+        }
+    }
 
     &::after {
-        content: attr(data-content);
         color: $dark-color;
         opacity: 1;
         visibility: visible;
