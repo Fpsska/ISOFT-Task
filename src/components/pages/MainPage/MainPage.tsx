@@ -42,12 +42,12 @@ const MainPage: React.FC = () => {
     dispatch(setFileName(fileName));
 
     // read document data
-    readDocumentData(e);
+    readFileData(e);
     // validation for file type
-    fileValidation(e, ['txt']);
+    fileValidation(e, ['.txt']);
   };
 
-  const readDocumentData = (e: any): void => {
+  const readFileData = (e: any): void => {
     const fileReader = new FileReader();
 
     fileReader.readAsText(e.target.files[0]);
@@ -120,8 +120,12 @@ const MainPage: React.FC = () => {
               <>
                 {isFileSelected ? (
                   <div className="file-manager__preview">
-                    <span className="file-manager__path">{directoryPath}</span>
-                    <span className="file-manager__file-name">{fileName}</span>
+                    <span className="file-manager__path" title={directoryPath}>
+                      {directoryPath}
+                    </span>
+                    <span className="file-manager__file-name" title={fileName}>
+                      {fileName}
+                    </span>
                   </div>
                 ) : (
                   <div className="file-manager__input input-file">
