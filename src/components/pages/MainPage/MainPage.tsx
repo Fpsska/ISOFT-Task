@@ -141,7 +141,6 @@ const MainPage: React.FC = () => {
               <>
                 {isFileSelected && (
                   <div className="file-manager__information">
-                    {/* <h3 className="file-manager__file-name">{fileName} ;</h3> */}
                     <h2 className="file-manager__caption">
                       data from this file:
                     </h2>

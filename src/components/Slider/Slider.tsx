@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { Ibreakpoints } from '../../types/sliderTypes';
 import { Ibutton } from '../../types/buttonsDataTypes';
@@ -23,45 +23,45 @@ import { Navigation, Scrollbar } from 'swiper';
 interface propTypes {
   data: Ibutton[];
   setButtonDataTemplates: (arg: Ibutton[]) => void;
-  limit: number;
 }
 
 // /. interfaces
 
-const Slider: React.FC<propTypes> = ({
-  data,
-  setButtonDataTemplates,
-  limit
-}) => {
+const Slider: React.FC<propTypes> = ({ data, setButtonDataTemplates }) => {
   const [breakpointsCFG] = useState<Ibreakpoints>({
     320: {
-      slidesPerView: 1
+      slidesPerGroup: 3,
+      slidesPerView: 3,
+      spaceBetween: 25
     },
     375: {
-      slidesPerView: 1
+      slidesPerGroup: 3,
+      slidesPerView: 3
+    },
+    425: {
+      slidesPerGroup: 4,
+      slidesPerView: 4,
+      spaceBetween: 35
+    },
+    525: {
+      slidesPerGroup: 5,
+      slidesPerView: 5
+    },
+    625: {
+      slidesPerGroup: 6,
+      slidesPerView: 6
     },
     768: {
-      slidesPerView: 1
+      slidesPerGroup: 7,
+      slidesPerView: 7
     },
     1024: {
-      slidesPerView: 1
-    },
-    1440: {
-      slidesPerView: 1
-    },
-    1920: {
-      slidesPerView: 1
+      slidesPerGroup: 8,
+      slidesPerView: 8
     }
   });
-  const [initialArrayEl, setInitialArrayEl] = useState<Ibutton[]>(data);
-  const [lastArrayEl, setLastArrayEl] = useState<Ibutton[]>(data);
 
-  useEffect(() => {
-    setInitialArrayEl(data.slice(0, limit));
-    setLastArrayEl(data.slice(limit, data.length));
-  }, [data, limit]);
-
-  const handleButtonClick = (_id: number, e: any): void => {
+  const handleButtonClick = (_id: number, e: React.SyntheticEvent): void => {
     // add active class for current item, remove class of other elmts
     const newArray = data.map(item =>
       item.id === _id
@@ -91,7 +91,6 @@ const Slider: React.FC<propTypes> = ({
   return (
     <>
       <Swiper
-        spaceBetween={50}
         navigation={{
           prevEl: '.slider-button.prev',
           nextEl: '.slider-button.next'
@@ -103,9 +102,9 @@ const Slider: React.FC<propTypes> = ({
         modules={[Navigation, Scrollbar]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          {initialArrayEl.map((template: Ibutton) => {
-            return (
+        {data.map((template: Ibutton) => {
+          return (
+            <SwiperSlide key={template.id}>
               <Button
                 key={template.id}
                 id={template.id}
@@ -113,22 +112,9 @@ const Slider: React.FC<propTypes> = ({
                 isActive={template.isActive}
                 handleButtonClick={handleButtonClick}
               ></Button>
-            );
-          })}
-        </SwiperSlide>
-        <SwiperSlide>
-          {lastArrayEl.map((template: Ibutton) => {
-            return (
-              <Button
-                key={template.id}
-                id={template.id}
-                role={template.role}
-                isActive={template.isActive}
-                handleButtonClick={handleButtonClick}
-              ></Button>
-            );
-          })}
-        </SwiperSlide>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
       <button className="slider-button next"></button>
       <button className="slider-button prev"></button>

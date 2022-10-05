@@ -1,3 +1,7 @@
+@import './functions';
+
+// /. imports
+
 @media screen and (max-width: 768px) {
     .section__wrapper {
 
@@ -42,11 +46,6 @@
         grid-column: 6 span;
     }
 
-    .button {
-        &:not(:last-child) {
-            margin-right: useRem(25);
-        }
-    }
 }
 
 @media screen and (max-width: 700px) {
@@ -120,5 +119,11 @@
     .group__column--2,
     .group__column--3 {
         grid-column: 4 span;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer__wrapper {
+        padding: useRem(16) useRem(65) useRem(20) useRem(65);
     }
 }

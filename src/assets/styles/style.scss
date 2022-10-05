@@ -211,6 +211,8 @@ body {
         position: relative;
         display: flex;
         flex-direction: column;
+        overflow: hidden;
+        word-break: break-all;
         padding: useRem(2) useRem(20) useRem(2) 0;
 
         .file-manager__file-name {
@@ -220,7 +222,7 @@ body {
 
     &__button {
         position: absolute;
-        top: useRem(-8);
+        top: useRem(-2);
         right: 0;
         background-color: transparent;
 
