@@ -50,12 +50,10 @@ body {
 
     &::-webkit-scrollbar-track {
         background: none;
-        background-color: none;
     }
 
     &::-webkit-scrollbar-thumb {
         background: none;
-        background-color: none;
         border: none;
     }
 }
@@ -94,10 +92,13 @@ body {
         ;
     }
 
-    &__column {
-        overflow: hidden;
+    &__text {
         color: $red;
         font-weight: 700;
+    }
+
+    &__column {
+        overflow: hidden;
     }
 
     &__column--1 {
@@ -128,25 +129,39 @@ body {
     &__column--6 {
         grid-area: col-6;
         grid-column: 4 span;
-        min-height: useRem(25);
+        min-height: useRem(35);
     }
 
     &__column--7 {
         grid-area: col-7;
         grid-column: 4 span;
-        min-height: useRem(25);
+        min-height: useRem(35);
     }
 }
 
 .group {
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 100%;
 
     &__column {
         overflow: hidden;
-        color: $red;
-        font-weight: 700;
+
+        &::-webkit-scrollbar {
+            width: 0;
+            height: 0
+        }
+
+        &::-webkit-scrollbar-track {
+            background: none;
+            background-color: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: none;
+            background-color: none;
+            border: none;
+        }
     }
 
     &__column--1 {
@@ -162,14 +177,14 @@ body {
     &__column--3 {
         grid-area: col-3;
         grid-column: 4 span;
-        min-height: useRem(25);
+        min-height: useRem(35);
     }
 }
 
 .group--empty {
     grid-template-areas:
-        "col-1 col-2"
-        "col-3 col-3"
+        "col-1 col-1 col-2 col-2"
+        "col-3 col-3 col-3 col-3"
     ;
 }
 
@@ -185,7 +200,7 @@ body {
         justify-content: center;
         background-color: #7E63BE;
         padding: useRem(1) useRem(25) useRem(1) useRem(10);
-        margin: 0 0 useRem(15);
+        margin: 0 0 useRem(10) 0;
 
         :not(:last-child) {
             margin: 0 0 useRem(5) 0;
@@ -205,7 +220,7 @@ body {
 
     &__button {
         position: absolute;
-        top: useRem(-13);
+        top: useRem(-8);
         right: 0;
         background-color: transparent;
 
@@ -249,26 +264,6 @@ body {
     &__file-data {
         display: flex;
         flex-direction: column;
-        // max-height: calc(useRem(768) - useRem(600));
-        overflow: auto;
-
-        &::-webkit-scrollbar {
-            width: useRem(4);
-            height: useRem(4);
-        }
-
-        &::-webkit-scrollbar-track,
-        &::-webkit-scrollbar-corner {
-            background: none;
-            background-color: none;
-        }
-
-        &::-webkit-scrollbar-thumb {
-            background: $dark-color;
-            background-color: $dark-color;
-        }
-
-
 
         span {
             font-weight: 400;

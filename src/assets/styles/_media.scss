@@ -3,13 +3,6 @@
 
         grid-template-columns: repeat(6, 1fr);
 
-        // grid-template-areas:
-        //     "col-1 col-1 col-1"
-        //     "col-2 col-3 col-3"
-        //     "col-2 col-3 col-3"
-        //     "col-4 col-4 col-5"
-        // ;
-
         grid-template-areas:
             "col-1 col-1 col-1 col-1 col-1 col-1"
             "col-2 col-2 col-3 col-3 col-3 col-3"
@@ -47,6 +40,12 @@
 
     .group__column--3 {
         grid-column: 6 span;
+    }
+
+    .button {
+        &:not(:last-child) {
+            margin-right: useRem(25);
+        }
     }
 }
 

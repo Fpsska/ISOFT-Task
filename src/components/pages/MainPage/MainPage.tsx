@@ -8,6 +8,7 @@ import {
   setDirectoryPath,
   setFileName,
   setFileContent,
+  resetFileContent,
   switchFileSelectedStatus
 } from '../../../app/slices/formSlice';
 
@@ -22,6 +23,11 @@ const MainPage: React.FC = () => {
     useAppSelector(state => state.formSlice);
 
   const dispatch = useAppDispatch();
+
+  const closeSelectedFile = (): void => {
+    dispatch(switchFileSelectedStatus(false));
+    dispatch(resetFileContent());
+  };
 
   const handleInputFile = (e: any): void => {
     const path = e.target.value;
@@ -86,10 +92,11 @@ const MainPage: React.FC = () => {
           <div className="group group--empty">
             <div className="group__column group__column--1 border indent">
               <p className="section__text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi
-                corrupti tempora labore, inventore debitis beatae amet modi
-                neque consequatur sint, veniam quibusdam, asperiores quae
-                molestias recusandae consequuntur ipsam delectus minus.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                Necessitatibus blanditiis consequatur maiores quae, praesentium
+                tempore? Iusto sed omnis culpa, aliquam similique cupiditate,
+                ullam accusantium veritatis exercitationem aspernatur
+                perspiciatis rerum illo.
               </p>
             </div>
             <div className="group__column group__column--2 border indent">
@@ -134,7 +141,7 @@ const MainPage: React.FC = () => {
               <>
                 {isFileSelected && (
                   <div className="file-manager__information">
-                    <h3 className="file-manager__file-name">{fileName} ;</h3>
+                    {/* <h3 className="file-manager__file-name">{fileName} ;</h3> */}
                     <h2 className="file-manager__caption">
                       data from this file:
                     </h2>
@@ -146,7 +153,7 @@ const MainPage: React.FC = () => {
                     <button
                       className="file-manager__button"
                       aria-label="remove selected file"
-                      onClick={() => dispatch(switchFileSelectedStatus(false))}
+                      onClick={() => closeSelectedFile()}
                     >
                       <svg
                         width="24"

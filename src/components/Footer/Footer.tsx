@@ -98,6 +98,7 @@ const Footer: React.FC = () => {
         <Slider
           data={buttonDataTemplates}
           setButtonDataTemplates={setButtonDataTemplates}
+          limit={8}
         ></Slider>
       </div>
     </footer>

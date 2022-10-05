@@ -7,8 +7,9 @@
     position: static;
     width: 100%;
     height: 100%;
-    padding: useRem(5) 0;
+    padding: useRem(5);
 }
+
 
 .swiper-scrollbar {
     background: transparent;
@@ -21,14 +22,9 @@
 }
 
 .swiper-slide {
-    text-align: center;
     background: transparent;
-
-    /* Center slide text vertically */
     display: flex;
-    justify-content: center;
-    align-items: center;
-
+    justify-content: space-between;
 }
 
 .slider-button {
@@ -59,7 +55,6 @@
             border-color: transparent $white-color transparent transparent;
         }
     }
-
 
     &::after {
         content: '';

@@ -35,6 +35,9 @@ const formSlice = createSlice({
         setFileContent(state, action: PayloadAction<{ id: number, value: string }>) {
             state.fileContent.push(action.payload)
         },
+        resetFileContent(state) {
+            state.fileContent = []
+        },
         switchFileSelectedStatus(state, action: PayloadAction<boolean>) {
             state.isFileSelected = action.payload
         },
@@ -45,6 +48,7 @@ export const {
     setDirectoryPath,
     setFileName,
     setFileContent,
+    resetFileContent,
     switchFileSelectedStatus
 } = formSlice.actions;
 
