@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 
@@ -14,19 +14,22 @@ const Form: React.FC = () => {
   const [enteredInputValue, setEnteredInputValue] = useState<string>('');
 
   const formRef = useRef<HTMLFormElement>(null!);
+  const inputRef = useRef<HTMLInputElement>(null!);
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    // add autofocus for form__input
+    isFileSelected && inputRef.current.focus();
+  }, [isFileSelected]);
 
   const handleFormSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
 
-    console.log(enteredInputValue);
-    // dispatch(
-    //   setInputValue({ id: +new Date(), value: `${enteredInputValue} ;` })
-    // );
     dispatch(
       setFileContent({
         id: +new Date(),
+        // prohibit dispatch with only for ; as a value
         value: `${enteredInputValue} ${enteredInputValue && ';'}`
       })
     );
@@ -36,16 +39,16 @@ const Form: React.FC = () => {
   };
 
   return (
-    <form className="form" ref={formRef} onSubmit={e => handleFormSubmit(e)}>
+    <form ref={formRef} className="form" onSubmit={e => handleFormSubmit(e)}>
       <fieldset>
         <legend>add new file name</legend>
         <input
           className="form__input"
+          ref={inputRef}
           type="text"
           placeholder="Type file name..."
           onChange={e => setEnteredInputValue(e.target.value)}
           disabled={!isFileSelected}
-          autoFocus
         />
       </fieldset>
     </form>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Ifile } from '../../../types/fileDataTypes';
 
@@ -7,14 +7,12 @@ import { useFileValidation } from '../../../hooks/useFileValidation';
 import { useAppSelector, useAppDispatch } from '../../../app/hooks';
 
 import {
-  setDirectoryPath,
-  setFileName,
-  setFileContent,
   resetFileContent,
   switchFileSelectedStatus
 } from '../../../app/slices/formSlice';
 
 import Form from '../../Form/Form';
+import FileInput from '../../FileInput/FileInput';
 
 import '../../../assets/styles/style.scss';
 
@@ -31,36 +29,6 @@ const MainPage: React.FC = () => {
   const closeSelectedFile = (): void => {
     dispatch(switchFileSelectedStatus(false));
     dispatch(resetFileContent());
-  };
-
-  const handleInputFile = (e: any): void => {
-    const path = e.target.value;
-    const fileName = e.target.files[0].name;
-
-    dispatch(switchFileSelectedStatus(true));
-    dispatch(setDirectoryPath(path));
-    dispatch(setFileName(fileName));
-
-    // read document data
-    readFileData(e);
-    // validation for file type
-    fileValidation(e, ['.txt']);
-  };
-
-  const readFileData = (e: any): void => {
-    const fileReader = new FileReader();
-
-    fileReader.readAsText(e.target.files[0]);
-
-    fileReader.onload = (): void => {
-      dispatch(
-        setFileContent({ id: +new Date(), value: String(fileReader.result) })
-      );
-    };
-
-    fileReader.onerror = (): void => {
-      console.error(fileReader.error);
-    };
   };
 
   return (
@@ -128,22 +96,7 @@ const MainPage: React.FC = () => {
                     </span>
                   </div>
                 ) : (
-                  <div className="file-manager__input input-file">
-                    <form
-                      className="input-file__form"
-                      onSubmit={e => e.preventDefault()}
-                    >
-                      <label className="input-file__label">
-                        <span>Choose file</span>
-                        <input
-                          className="input-file__input"
-                          type="file"
-                          accept=".txt"
-                          onChange={e => handleInputFile(e)}
-                        />
-                      </label>
-                    </form>
-                  </div>
+                  <FileInput fileValidation={fileValidation} />
                 )}
               </>
               <>

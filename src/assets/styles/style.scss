@@ -279,28 +279,3 @@ body {
         }
     }
 }
-
-.input-file {
-    &__form {
-        padding: useRem(10);
-        border: useRem(2) dashed #7E63BE;
-        display: block;
-    }
-
-    &__label {
-        display: block;
-        width: 100%;
-        text-align: center;
-        cursor: pointer;
-        color: $white-color;
-        transition: color .3s ease-in-out;
-
-        &:hover {
-            color: $dark-color;
-        }
-    }
-
-    &__input {
-        @include hideElement;
-    }
-}
