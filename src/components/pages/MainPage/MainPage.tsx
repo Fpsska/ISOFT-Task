@@ -31,7 +31,7 @@ const MainPage: React.FC = () => {
 
   const handleInputFile = (e: any): void => {
     const path = e.target.value;
-    const fileName = e.currentTarget.files[0].name;
+    const fileName = e.target.files[0].name;
 
     dispatch(switchFileSelectedStatus(true));
     dispatch(setDirectoryPath(path));
@@ -39,23 +39,35 @@ const MainPage: React.FC = () => {
 
     // read document data
     readDocumentData(e);
+    // validation for file type
+    fileTypeValidaton(e);
+  };
+
+  const fileTypeValidaton = (e: any) => {
+    const fileName = e.target.files[0].name;
+
+    const allowedExtensions = ['txt'];
+
+    const fileExtension = fileName.split('.').pop();
+    if (!allowedExtensions.includes(fileExtension)) {
+      dispatch(switchFileSelectedStatus(false));
+      console.error('incorrect file format');
+    }
   };
 
   const readDocumentData = (e: any): void => {
     const fileReader = new FileReader();
-    console.log(e.target.files[0]);
 
     fileReader.readAsText(e.target.files[0]);
 
-    fileReader.onload = () => {
-      console.log(fileReader.result);
+    fileReader.onload = (): void => {
       dispatch(
         setFileContent({ id: +new Date(), value: String(fileReader.result) })
       );
     };
 
-    fileReader.onerror = function () {
-      console.log(fileReader.error);
+    fileReader.onerror = (): void => {
+      console.error(fileReader.error);
     };
   };
 
