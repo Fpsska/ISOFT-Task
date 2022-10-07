@@ -7,13 +7,15 @@ import './header.scss';
 // /. imports
 
 const Header: React.FC = () => {
-  const [time, setTime] = useState<string>('00:00:00 PM');
+  const [time, setTime] = useState<string>('00:00:00 xx');
+  const [dateTimeAttr, setDateTimeAttr] = useState<string>('');
 
   useEffect(() => {
     const date = new Date();
 
     const currentTime = setInterval(() => {
-      setTime(date.toLocaleTimeString());
+      setTime(date.toLocaleTimeString('en-US'));
+      setDateTimeAttr(date.toISOString());
     }, 1000);
 
     return () => {
@@ -24,7 +26,9 @@ const Header: React.FC = () => {
   return (
     <header className="header border">
       <div className="header__wrapper">
-        <time className="header__time">Current time: {time}</time>
+        <time className="header__time" dateTime={dateTimeAttr}>
+          Current time: {time}
+        </time>
 
         <a
           className="header__logo logo"
